@@ -1,0 +1,8 @@
+def mod():
+    print("本插件为默认插件可以进行修改")
+    a = input("按下a即可退出插件")
+    if a == "a":
+        import KG游戏
+        KG = KG游戏
+        print(KG)
+

@@ -1,0 +1,123 @@
+# xiugou游戏,制作者YCJ
+import time
+import random
+
+print("欢迎来到KG游戏")
+name = input("请输入你的昵称:")
+namex = open("./data/user/name.txt", "w")
+namex.write(name)
+namex.close()
+print("欢迎,", name)
+print("======KG游戏======")
+print("1<开始游戏>2<保存存档>3<退出游戏>4<打开商店>5<插件-mod>")
+xuanze = input("做出你的选择:")
+if xuanze == "1":
+    print("加载中...")
+    time.sleep(2)
+    print("加载成功,正在进入!")
+    print("[", name, "]", "|你的血量为[100]|你的攻击力为100~150(武器加成不算入)")
+    xue = 100
+    bossxue = 300
+    time.sleep(1)
+    print("前方出现目标!")
+    print("|目标名称:boss|血量:300|攻击力:10~40之间|")
+    while True:
+        bossgong = random.randint(10, 40)
+        namegong = random.randint(100, 150)
+        print("boss对你发起了进攻")
+        xue = xue - bossgong
+        if xue <= 0:
+            print("你失败了")
+            print("-程序将在5秒后自动退出-")
+            time.sleep(5)
+        else:
+            print("你的血量剩余为", xue)
+            print("boss的血量剩余为", bossxue)
+            namefan = input("按下a即可反击")
+            if namefan == "a":
+                print("正在反击...")
+                jiacheng = open("./data/game/cundang.txt", "r")
+                jiacheng1 = jiacheng.read()
+                jiacheng = open("./data/game/cundang1.txt", "r")
+                jiacheng2 = jiacheng.read()
+                if jiacheng1 == "1":
+                    print("正在使用烈火大刀...")
+                    namegong = namegong + 50
+                    print("你使用烈火大刀对boss造成伤害", namegong)
+                    bossxue = bossxue - namegong
+                    if bossxue <= 0:
+                        print("你获胜了!!!")
+                        print("-程序将在10秒后自动退出-")
+                        print("本次收益10金币")
+                        shouyi = open("./data/game/jinbi.txt", "r")
+                        sy = shouyi.read()
+                        sy = int(sy)
+                        shouyi.close()
+                        shi = 10
+                        sy = sy + shi
+                        sy2 = str(sy)
+                        shouyi1 = open("./data/game/jinbi.txt", "w")
+                        shouyi1.write(sy2)
+                        shouyi1.close()
+                        time.sleep(10)
+                        break
+                elif jiacheng2 == "1":
+                    print("正在使用普通大刀...")
+                    namegong = namegong + 10
+                    print("你使用普通大刀对boss造成伤害", namegong)
+                    bossxue = bossxue - namegong
+                    if bossxue <= 0:
+                        print("你获胜了!!!")
+                        print("-程序将在10秒后自动退出-")
+                        print("本次收益10金币")
+                        shouyi = open("./data/game/jinbi.txt", "r")
+                        sy = shouyi.read()
+                        sy = int(sy)
+                        shouyi.close()
+                        shi = 10
+                        sy = sy + shi
+                        sy2 = str(sy)
+                        shouyi1 = open("./data/game/jinbi.txt", "w")
+                        shouyi1.write(sy2)
+                        shouyi1.close()
+                        time.sleep(10)
+                        break
+                else:
+                    print("你对boss造成伤害", namegong)
+                    bossxue = bossxue - namegong
+                    if bossxue <= 0:
+                        print("你获胜了!!!")
+                        print("-程序将在10秒后自动退出-")
+                        print("本次收益10金币")
+                        shouyi = open("./data/game/jinbi.txt", "r")
+                        sy = shouyi.read()
+                        sy = int(sy)
+                        shouyi.close()
+                        shi = 10
+                        sy = sy + shi
+                        sy2 = str(sy)
+                        shouyi1 = open("./data/game/jinbi.txt", "w")
+                        shouyi1.write(sy2)
+                        shouyi1.close()
+                        time.sleep(10)
+                        break
+            else:
+                print("你选择不攻击")
+                time.sleep(1)
+elif xuanze == "2":
+    print("保存中...")
+    time.sleep(3)
+    print("保存成功!")
+elif xuanze == "3":
+    exit()
+elif xuanze == "4":
+    import shop
+    shop2 = shop.shop1()
+    print(shop2)
+elif xuanze == "5":
+    import mod
+    mod1 = mod.mod()
+    print(mod1)
+else:
+    print("请输入正确的选择:)")
+
